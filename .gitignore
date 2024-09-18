@@ -2,3 +2,5 @@ package-lock.json
 yarn.*
 node_modules/*
 coverage/*
+.env
+prisma/migrations/*
