@@ -16,6 +16,19 @@ describe("UpdateCustomerUsecase", () => {
       new NotFoundException(messages.customerNotFound)
     );
   });
+
+  test("Should not allow disabling the customer", async () => {
+    const repository = new CustomerRepositoryInMemory();
+    const customer = makeAValidCustomer() as ICustomer;
+    repository.items.push(customer);
+    const updateCustomerUsecase = new UpdateCustomerUsecase(repository);
+    const response = await updateCustomerUsecase.update({
+      ...customer,
+      active: false,
+    });
+    expect(response.active).toBe(true);
+  });
+
   test("Should update customer successfully", async () => {
     const repository = new CustomerRepositoryInMemory();
     const customer = makeAValidCustomer() as ICustomer;

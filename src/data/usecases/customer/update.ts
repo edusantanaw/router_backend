@@ -2,14 +2,12 @@ import { ICustomer } from "@/@types/customer.type";
 import { Customer } from "@/domain/entities/customer";
 import { NotFoundException } from "@/domain/exceptions/notFoundException";
 import messages from "@/data/usecases/customer/utils/messages.json";
+import { IUpdateRepository } from "@/data/repositories/update.repository";
+import { ILoadByIdRepository } from "@/data/repositories/loadById.repository";
 
-interface IUpdateRepository<T> {
-  update(data: T): Promise<T>;
-}
-
-interface ICustomerRepository extends IUpdateRepository<ICustomer> {
-  loadById(id: string): Promise<ICustomer | null>;
-}
+interface ICustomerRepository
+  extends IUpdateRepository<ICustomer>,
+    ILoadByIdRepository<ICustomer> {}
 
 export class UpdateCustomerUsecase {
   constructor(protected repository: ICustomerRepository) {}
@@ -20,8 +18,9 @@ export class UpdateCustomerUsecase {
     const customer = new Customer({
       ...customerExists,
       ...data,
-    });
-    const updatedCustomer = await this.repository.update(customer.getCustomer);
+      active: true,
+    }).getCustomer;
+    const updatedCustomer = await this.repository.update(customer);
     return updatedCustomer;
   }
 }
