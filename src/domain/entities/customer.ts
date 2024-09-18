@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { PersonType } from "../enums/personType.enum";
+import { ICustomer } from "../../@types/customer.type";
 
 type IData = {
   id?: string;
@@ -33,7 +34,7 @@ export class Customer {
     if (data.active !== undefined) this.active = data.active;
   }
 
-  public get getCustoemr() {
+  public get getCustomer(): ICustomer {
     return {
       id: this.id,
       name: this.name,
@@ -46,7 +47,8 @@ export class Customer {
     };
   }
 
-  public disablePerson() {
+  public disable() {
     this.active = false;
+    return this
   }
 }
