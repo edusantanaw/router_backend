@@ -1,4 +1,4 @@
-import { IPagination } from "@/@types/pagination.type";
+import { IPagination } from "../../src/@types/pagination.type";
 
 export class RepositoryInMemory<T> {
   public items: T[] = [];

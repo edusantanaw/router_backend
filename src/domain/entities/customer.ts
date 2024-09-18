@@ -1,8 +1,8 @@
 import { randomUUID } from "node:crypto";
-import { ICreateCustomerData, ICustomer } from "@/@types/customer.type";
 import { PersonType } from "../enums/personType.enum";
 import { InvalidEntityException } from "../exceptions/invalidEntityException";
 import messages from "./messages/messages.json";
+import { ICreateCustomerData, ICustomer } from "../../@types/customer.type";
 
 export class Customer {
   private id: string;

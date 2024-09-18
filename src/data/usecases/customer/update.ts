@@ -1,9 +1,9 @@
-import { ICustomer } from "@/@types/customer.type";
-import { Customer } from "@/domain/entities/customer";
-import { NotFoundException } from "@/domain/exceptions/notFoundException";
-import messages from "@/data/usecases/customer/messages/messages.json";
-import { IUpdateRepository } from "@/data/repositories/update.repository";
-import { ILoadByIdRepository } from "@/data/repositories/loadById.repository";
+import { ICustomer } from "../../../@types/customer.type";
+import { Customer } from "../../../domain/entities/customer";
+import { NotFoundException } from "../../../domain/exceptions/notFoundException";
+import { ILoadByIdRepository } from "../../repositories/loadById.repository";
+import { IUpdateRepository } from "../../repositories/update.repository";
+import messages from "./messages/messages.json";
 
 interface ICustomerRepository
   extends IUpdateRepository<ICustomer>,

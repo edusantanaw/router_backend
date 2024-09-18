@@ -1,11 +1,11 @@
-import { ICustomer } from "@/@types/customer.type";
-import messages from "@/data/usecases/customer/messages/messages.json";
-import { AlreadyDisabledException } from "@/domain/exceptions/alreadyDisabled.exception";
-import { NotFoundException } from "@/domain/exceptions/notFoundException";
-import { CustomerRepositoryInMemory } from "@/test/mocks/customerRepository";
-import { makeAValidCustomer } from "@/test/utils/createCustomer";
-import { randomUUID } from "node:crypto";
+import messages from "./messages/messages.json";
 import { DisableCustomerUsecase } from "./disable";
+import { CustomerRepositoryInMemory } from "../../../../test/mocks/customerRepository";
+import { randomUUID } from "node:crypto";
+import { NotFoundException } from "../../../domain/exceptions/notFoundException";
+import { makeAValidCustomer } from "../../../../test/utils/createCustomer";
+import { ICustomer } from "../../../@types/customer.type";
+import { AlreadyDisabledException } from "../../../domain/exceptions/alreadyDisabled.exception";
 
 describe("DisableCustomerUsecase", () => {
   test("Should throw if customer not exists", () => {

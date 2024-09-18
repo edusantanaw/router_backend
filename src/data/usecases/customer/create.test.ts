@@ -1,9 +1,9 @@
-import messages from "@/data/usecases/customer/messages/messages.json";
-import { CustomerRepositoryInMemory } from "@/test/mocks/customerRepository";
-import { makeAValidCustomer } from "@/test/utils/createCustomer";
+import { CustomerRepositoryInMemory } from "../../../../test/mocks/customerRepository";
+import { makeAValidCustomer } from "../../../../test/utils/createCustomer";
+import { ICustomer } from "../../../@types/customer.type";
+import { AlreadyExistsException } from "../../../domain/exceptions/alreadyExists.exception";
 import { CreateCustomerUsecase } from "./create";
-import { AlreadyExistsException } from "@/domain/exceptions/alreadyExists.exception";
-import { ICustomer } from "@/@types/customer.type";
+import messages from "./messages/messages.json";
 
 describe("CreateCustomerUsecase", () => {
   test("Should throw if cpf or cnpj is already in use", () => {

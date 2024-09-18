@@ -1,9 +1,9 @@
-import { ICustomer } from "@/@types/customer.type";
-import { NotFoundException } from "@/domain/exceptions/notFoundException";
-import { CustomerRepositoryInMemory } from "@/test/mocks/customerRepository";
-import { makeAValidCustomer } from "@/test/utils/createCustomer";
+import { CustomerRepositoryInMemory } from "../../../../test/mocks/customerRepository";
+import { makeAValidCustomer } from "../../../../test/utils/createCustomer";
+import { ICustomer } from "../../../@types/customer.type";
+import { NotFoundException } from "../../../domain/exceptions/notFoundException";
+import messages from "./messages/messages.json";
 import { UpdateCustomerUsecase } from "./update";
-import messages from "@/data/usecases/customer/messages/messages.json";
 
 describe("UpdateCustomerUsecase", () => {
   test("Should throw if customer not exists", () => {

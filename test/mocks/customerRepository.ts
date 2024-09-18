@@ -1,4 +1,4 @@
-import { ICustomer } from "@/@types/customer.type";
+import { ICustomer } from "../../src/@types/customer.type";
 import { RepositoryInMemory } from "./repository";
 
 export class CustomerRepositoryInMemory extends RepositoryInMemory<ICustomer> {

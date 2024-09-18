@@ -11,11 +11,5 @@
     "strictFunctionTypes": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "baseUrl": "./src",
-    "paths": {
-      "@/test/*": ["../test/*"],
-      "@/*": ["*"]
-    }
   },
-  "include": ["src", "test"],
 }

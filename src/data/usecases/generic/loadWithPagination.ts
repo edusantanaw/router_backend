@@ -1,4 +1,4 @@
-import { IPagination, IPaginationResponse } from "@/@types/pagination.type";
+import { IPagination, IPaginationResponse } from "../../../@types/pagination.type";
 
 type IPagationationData = {
   take?: string | number;
