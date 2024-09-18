@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { PersonType } from "../enums/personType.enum";
 import { ICustomer } from "../../@types/customer.type";
 
-type IData = {
+export type ICustomerData = {
   id?: string;
   name: string;
   personType: PersonType;
@@ -23,7 +23,7 @@ export class Customer {
   private createdAt?: Date;
   private active: boolean = true;
 
-  constructor(data: IData) {
+  constructor(data: ICustomerData) {
     this.id = data.id ?? randomUUID();
     this.name = data.name;
     this.address = data.address;

@@ -1,20 +1,6 @@
-import { randomUUID } from "node:crypto";
+import { makeAValidCustomer } from "../../../test/utils/createCustomer";
 import { PersonType } from "../enums/personType.enum";
 import { Customer } from "./customer";
-import { ICustomer } from "../../@types/customer.type";
-
-function makeAValidCustomer(): ICustomer {
-  return {
-    id: randomUUID(),
-    name: "name",
-    active: true,
-    address: "any_address",
-    cpfCnpj: "1111111111111",
-    dateOfBirth: new Date(),
-    personType: PersonType.LEGAL,
-    createdAt: new Date(),
-  };
-}
 
 describe("Customer", () => {
   test("Should generate a random uuid if id is not provided", () => {
