@@ -1,0 +1,27 @@
+import { ICustomer } from "@/@types/customer.type";
+import { NotFoundException } from "@/domain/exceptions/notFoundException";
+import { CustomerRepositoryInMemory } from "@/test/mocks/customerRepository";
+import { makeAValidCustomer } from "@/test/utils/createCustomer";
+import { UpdateCustomerUsecase } from "./update";
+import messages from "@/data/usecases/customer/utils/messages.json";
+
+describe("UpdateCustomerUsecase", () => {
+  test("Should throw if customer not exists", () => {
+    const repository = new CustomerRepositoryInMemory();
+    const updateCustomerUsecase = new UpdateCustomerUsecase(repository);
+    const response = updateCustomerUsecase.update(
+      makeAValidCustomer() as ICustomer
+    );
+    expect(response).rejects.toEqual(
+      new NotFoundException(messages.customerNotFound)
+    );
+  });
+  test("Should update customer successfully", async () => {
+    const repository = new CustomerRepositoryInMemory();
+    const customer = makeAValidCustomer() as ICustomer;
+    repository.items.push(customer);
+    const updateCustomerUsecase = new UpdateCustomerUsecase(repository);
+    const response = await updateCustomerUsecase.update(customer);
+    expect(response).toEqual(customer);
+  });
+});

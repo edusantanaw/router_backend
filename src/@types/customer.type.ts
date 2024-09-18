@@ -1,6 +1,6 @@
 import { PersonType } from "../domain/enums/personType.enum";
 
-export type ICustomer = {
+export type ICreateCustomerData = {
   id?: string;
   name: string;
   personType: PersonType;
@@ -10,3 +10,5 @@ export type ICustomer = {
   createdAt?: Date;
   active: boolean;
 };
+
+export type ICustomer = Required<ICreateCustomerData>;

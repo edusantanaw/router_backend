@@ -1,8 +1,8 @@
+import { ICreateCustomerData } from "@/@types/customer.type";
+import { PersonType } from "@/domain/enums/personType.enum";
 import { randomUUID } from "node:crypto";
-import { ICustomer } from "../../src/@types/customer.type";
-import { PersonType } from "../../src/domain/enums/personType.enum";
 
-export function makeAValidCustomer(): ICustomer {
+export function makeAValidCustomer(): ICreateCustomerData {
   return {
     id: randomUUID(),
     name: "name",

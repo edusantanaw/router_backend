@@ -1,17 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { PersonType } from "../enums/personType.enum";
-import { ICustomer } from "../../@types/customer.type";
-
-export type ICustomerData = {
-  id?: string;
-  name: string;
-  personType: PersonType;
-  cpfCnpj: string;
-  dateOfBirth: Date;
-  address: any;
-  createdAt?: Date;
-  active: boolean;
-};
+import { ICreateCustomerData, ICustomer } from "../../@types/customer.type";
 
 export class Customer {
   private id: string;
@@ -23,7 +12,7 @@ export class Customer {
   private createdAt?: Date;
   private active: boolean = true;
 
-  constructor(data: ICustomerData) {
+  constructor(data: ICreateCustomerData) {
     this.id = data.id ?? randomUUID();
     this.name = data.name;
     this.address = data.address;
@@ -42,13 +31,13 @@ export class Customer {
       cpfCnpj: this.cpfCnpj,
       dateOfBirth: this.dateOfBirth,
       address: this.address,
-      createdAt: this.createdAt,
+      createdAt: this.createdAt!,
       active: this.active,
     };
   }
 
   public disable() {
     this.active = false;
-    return this
+    return this;
   }
 }

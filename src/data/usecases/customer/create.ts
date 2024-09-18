@@ -1,24 +1,24 @@
-import { ICustomer } from "../../../@types/customer.type";
-import { Customer, ICustomerData } from "../../../domain/entities/customer";
-import { AlreadyExistsException } from "../../../domain/exceptions/AlreadyExists.exception";
-import messages from "./messages.json";
+import { ICreateCustomerData, ICustomer } from "@/@types/customer.type";
+import messages from "@/data/usecases/customer/utils/messages.json";
+import { Customer } from "@/domain/entities/customer";
+import { AlreadyExistsException } from "@/domain/exceptions/alreadyExists.exception";
 
 interface ICreateRepository<T> {
   create(data: T): Promise<T>;
 }
 
-interface ILoadByCpfCnpj {
+interface ILoadByCpfCnpjRepository {
   loadByCpfCnpj(cpfCnpj: string): Promise<ICustomer | null>;
 }
 
 interface ICustomerRepository
-  extends ILoadByCpfCnpj,
+  extends ILoadByCpfCnpjRepository,
     ICreateRepository<ICustomer> {}
 
 export class CreateCustomerUsecase {
   constructor(protected repository: ICustomerRepository) {}
 
-  public async create(data: ICustomerData) {
+  public async create(data: ICreateCustomerData) {
     const cpfCnpjExists = await this.repository.loadByCpfCnpj(data.cpfCnpj);
     if (cpfCnpjExists)
       throw new AlreadyExistsException(messages.alreadyExistisCpfCnpj);

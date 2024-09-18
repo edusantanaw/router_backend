@@ -1,6 +1,6 @@
-import { makeAValidCustomer } from "../../../test/utils/createCustomer";
-import { PersonType } from "../enums/personType.enum";
+import { makeAValidCustomer } from "@/test/utils/createCustomer";
 import { Customer } from "./customer";
+import { PersonType } from "../enums/personType.enum";
 
 describe("Customer", () => {
   test("Should generate a random uuid if id is not provided", () => {

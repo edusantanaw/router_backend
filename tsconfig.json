@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "ES2023",
     "module": "commonjs",
-    "rootDirs": ["src"],
     "allowJs": true,
     "outDir": "./dist",
     "esModuleInterop": true,
@@ -11,6 +10,12 @@
     "noImplicitAny": true,
     "strictFunctionTypes": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
-  }
+    "resolveJsonModule": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@/test/*": ["../test/*"],
+      "@/*": ["*"]
+    }
+  },
+  "include": ["src", "test"],
 }
