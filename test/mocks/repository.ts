@@ -1,3 +1,5 @@
+import { IPagination } from "@/@types/pagination.type";
+
 export class RepositoryInMemory<T> {
   public items: T[] = [];
 
@@ -12,5 +14,14 @@ export class RepositoryInMemory<T> {
     this.updateInput = data;
     this.items[0] = data;
     return data;
+  }
+
+  public loadWithPaginationInput: IPagination | null = null;
+  public async loadWithPagination(data: IPagination) {
+    this.loadWithPaginationInput = data;
+    return {
+      total: this.items.length,
+      data: this.items,
+    };
   }
 }

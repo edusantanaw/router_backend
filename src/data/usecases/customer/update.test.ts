@@ -3,7 +3,7 @@ import { NotFoundException } from "@/domain/exceptions/notFoundException";
 import { CustomerRepositoryInMemory } from "@/test/mocks/customerRepository";
 import { makeAValidCustomer } from "@/test/utils/createCustomer";
 import { UpdateCustomerUsecase } from "./update";
-import messages from "@/data/usecases/customer/utils/messages.json";
+import messages from "@/data/usecases/customer/messages/messages.json";
 
 describe("UpdateCustomerUsecase", () => {
   test("Should throw if customer not exists", () => {

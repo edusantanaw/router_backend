@@ -1,0 +1,5 @@
+{
+  "alreadyExistisCpfCnpj": "Cpf / Cnpj já está em uso!",
+  "customerNotFound": "Cliente não encontrado!",
+  "alreadyDisabled": "O cliente já está desabilitado!"
+}

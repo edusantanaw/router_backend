@@ -1,6 +1,8 @@
 import { randomUUID } from "node:crypto";
+import { ICreateCustomerData, ICustomer } from "@/@types/customer.type";
 import { PersonType } from "../enums/personType.enum";
-import { ICreateCustomerData, ICustomer } from "../../@types/customer.type";
+import { InvalidEntityException } from "../exceptions/invalidEntityException";
+import messages from "./messages/messages.json";
 
 export class Customer {
   private id: string;
@@ -18,6 +20,8 @@ export class Customer {
     this.address = data.address;
     this.dateOfBirth = data.dateOfBirth;
     this.cpfCnpj = data.cpfCnpj;
+    if (!PersonType[data.personType])
+      throw new InvalidEntityException(messages.invalidCustomerType);
     this.personType = data.personType;
     this.createdAt = data.createdAt;
     if (data.active !== undefined) this.active = data.active;

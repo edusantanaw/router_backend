@@ -1,5 +1,5 @@
 import { ICreateCustomerData, ICustomer } from "@/@types/customer.type";
-import messages from "@/data/usecases/customer/utils/messages.json";
+import messages from "@/data/usecases/customer/messages/messages.json";
 import { Customer } from "@/domain/entities/customer";
 import { AlreadyExistsException } from "@/domain/exceptions/alreadyExists.exception";
 

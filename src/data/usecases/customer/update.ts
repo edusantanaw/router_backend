@@ -1,7 +1,7 @@
 import { ICustomer } from "@/@types/customer.type";
 import { Customer } from "@/domain/entities/customer";
 import { NotFoundException } from "@/domain/exceptions/notFoundException";
-import messages from "@/data/usecases/customer/utils/messages.json";
+import messages from "@/data/usecases/customer/messages/messages.json";
 import { IUpdateRepository } from "@/data/repositories/update.repository";
 import { ILoadByIdRepository } from "@/data/repositories/loadById.repository";
 
