@@ -68,7 +68,7 @@ export class RouterRepository {
     const customers = await PrismaClient.customer.findMany({
       where: {
         Routers: {
-          every: {
+          some: {
             IP: IP
           }
         },
