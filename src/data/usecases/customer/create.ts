@@ -2,11 +2,8 @@ import { ICreateCustomerData, ICustomer } from "../../../@types/customer.type";
 import { Customer } from "../../../domain/entities/customer";
 import { AlreadyExistsException } from "../../../domain/exceptions/alreadyExists.exception";
 import { ICreateUsecase } from "../../../domain/usecases/create.usecase";
+import { ICreateRepository } from "../../repositories/create.repository";
 import messages from "./messages/messages.json";
-
-interface ICreateRepository<T> {
-  create(data: T): Promise<T>;
-}
 
 interface ILoadByCpfCnpjRepository {
   loadByCpfCnpj(cpfCnpj: string): Promise<ICustomer | null>;

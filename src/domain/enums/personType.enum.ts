@@ -1,5 +1,4 @@
-
 export enum PersonType {
-    "NORMAL",
-    "LEGAL"
+  "NORMAL",
+  "LEGAL",
 }

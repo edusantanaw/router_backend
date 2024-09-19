@@ -18,7 +18,7 @@ export class Customer {
     this.id = data.id ?? randomUUID();
     this.name = data.name;
     this.address = data.address;
-    this.dateOfBirth = data.dateOfBirth;
+    this.dateOfBirth = new Date(data.dateOfBirth);
     this.cpfCnpj = data.cpfCnpj;
     if (!PersonType[data.personType])
       throw new InvalidEntityException(messages.invalidCustomerType);

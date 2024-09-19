@@ -1,0 +1,5 @@
+{
+  "routerAlreadyRegistered": "O IP já está em uso!",
+  "routerNotFound": "O roteador não foi encontrado!",
+  "routerAlreadyDisabled": "O roteador já está desativado!"
+}

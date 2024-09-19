@@ -1,4 +1,4 @@
-import { CreateController } from "../../../../controllers/CreateController";
+import { CreateController } from "../../../../controllers/createController";
 import { createCustomerUsecaseFactory } from "../../usecases/customer/create";
 
 export function createCustomerControllerFactory() {

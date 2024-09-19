@@ -20,7 +20,7 @@ model Customer {
   cpfCnpj    String    @unique
   dateOfBirth DateTime
   address    Json
-  createdAt  DateTime  @default(now()) @db.Timestamp()
+  createdAt  DateTime  @default(now()) @db.Timestamp() 
   active     Boolean   @default(true)
   Routers    Routers[]
   routersIP  String?

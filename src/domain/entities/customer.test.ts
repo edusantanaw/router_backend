@@ -14,6 +14,7 @@ describe("Customer", () => {
 
   test("Should throw if a invalid person type is provided", () => {
     const data = makeAValidCustomer();
+
     expect(
       () =>
         new Customer({
