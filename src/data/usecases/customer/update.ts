@@ -1,6 +1,7 @@
 import { ICustomer } from "../../../@types/customer.type";
 import { Customer } from "../../../domain/entities/customer";
 import { NotFoundException } from "../../../domain/exceptions/notFoundException";
+import { IUpdateUsecase } from "../../../domain/usecases/update.usecase";
 import { ILoadByIdRepository } from "../../repositories/loadById.repository";
 import { IUpdateRepository } from "../../repositories/update.repository";
 import messages from "./messages/messages.json";
@@ -9,7 +10,7 @@ interface ICustomerRepository
   extends IUpdateRepository<ICustomer>,
     ILoadByIdRepository<ICustomer> {}
 
-export class UpdateCustomerUsecase {
+export class UpdateCustomerUsecase implements IUpdateUsecase<ICustomer> {
   constructor(protected repository: ICustomerRepository) {}
 
   public async update(data: ICustomer) {

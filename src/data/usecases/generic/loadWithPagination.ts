@@ -1,12 +1,19 @@
-import { IPagination, IPaginationResponse } from "../../../@types/pagination.type";
-import { ILoadWithPaginationlUsecase, IPagationationData } from "../../../domain/usecases/loadWithPagination";
-
+import {
+  IPagination,
+  IPaginationResponse,
+} from "../../../@types/pagination.type";
+import {
+  ILoadWithPaginationlUsecase,
+  IPagationationData,
+} from "../../../domain/usecases/loadWithPagination.usecase";
 
 interface ILoadWithPaginationRepository<T> {
   loadWithPagination(data: IPagination): Promise<IPaginationResponse<T>>;
 }
 
-export class LoadWithPaginationlUsecase<T> implements ILoadWithPaginationlUsecase<T> {
+export class LoadWithPaginationlUsecase<T>
+  implements ILoadWithPaginationlUsecase<T>
+{
   constructor(protected repository: ILoadWithPaginationRepository<T>) {}
 
   public async load(data: IPagationationData) {
@@ -23,5 +30,5 @@ export class LoadWithPaginationlUsecase<T> implements ILoadWithPaginationlUsecas
       take,
       skip,
     };
-}
+  }
 }

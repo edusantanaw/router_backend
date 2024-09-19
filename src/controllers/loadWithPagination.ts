@@ -3,7 +3,7 @@ import { HttpStatus } from "../@types/http";
 import {
   ILoadWithPaginationlUsecase,
   IPagationationData,
-} from "../domain/usecases/loadWithPagination";
+} from "../domain/usecases/loadWithPagination.usecase";
 import { Ok } from "./utils/httpStatus";
 
 export class LoadWithPaginationController<T>
@@ -14,6 +14,6 @@ export class LoadWithPaginationController<T>
   ) {}
   async handler(data: IPagationationData): Promise<HttpStatus> {
     const response = await this.loadWithPaginationUsecase.load(data);
-    throw Ok(response);
+    return Ok(response);
   }
 }
