@@ -14,7 +14,7 @@ export class Router {
     this.IPv6 = data.IPv6;
     this.brand = data.brand;
     this.model = data.model;
-    this.active = data.active;
+    if (data.active !== undefined) this.active = data.active;
     this.customers = data.customers;
   }
 

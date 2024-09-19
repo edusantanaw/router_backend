@@ -2,6 +2,7 @@ import { Routers } from "@prisma/client";
 import { IPagination, IPaginationResponse } from "../../@types/pagination.type";
 import { IRouter } from "../../@types/route.type";
 import PrismaClient from "../prisma";
+import { ICustomer } from "../../@types/customer.type";
 
 export class RouterRepository {
   public async create(data: IRouter) {
@@ -61,5 +62,18 @@ export class RouterRepository {
     });
     const count = await PrismaClient.customer.count();
     return { total: count, data: routers };
+  }
+
+  public async loadCustomers(IP: string) {
+    const customers = await PrismaClient.customer.findMany({
+      where: {
+        Routers: {
+          every: {
+            IP: IP
+          }
+        },
+      },
+    });
+    return customers as unknown as ICustomer[];
   }
 }
