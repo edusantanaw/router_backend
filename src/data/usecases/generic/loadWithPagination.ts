@@ -26,5 +26,5 @@ export class LoadWithPaginationlUsecase<T> {
       take,
       skip,
     };
-  }
+}
 }

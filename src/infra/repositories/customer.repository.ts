@@ -30,7 +30,7 @@ export class CustomerRepository {
     return { ...customer, address: customer.address as IAddress } as ICustomer;
   }
 
-  public async loadCpfCnpj(cpfCnpj: string) {
+  public async loadByCpfCnpj(cpfCnpj: string) {
     const customer = await PrismaClient.customer.findFirst({
       where: {
         cpfCnpj,

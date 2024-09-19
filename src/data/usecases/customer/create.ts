@@ -1,6 +1,7 @@
 import { ICreateCustomerData, ICustomer } from "../../../@types/customer.type";
 import { Customer } from "../../../domain/entities/customer";
 import { AlreadyExistsException } from "../../../domain/exceptions/alreadyExists.exception";
+import { ICreateUsecase } from "../../../domain/usecases/create.usecase";
 import messages from "./messages/messages.json";
 
 interface ICreateRepository<T> {
@@ -15,7 +16,9 @@ interface ICustomerRepository
   extends ILoadByCpfCnpjRepository,
     ICreateRepository<ICustomer> {}
 
-export class CreateCustomerUsecase {
+export class CreateCustomerUsecase
+  implements ICreateUsecase<ICreateCustomerData, ICustomer>
+{
   constructor(protected repository: ICustomerRepository) {}
 
   public async create(data: ICreateCustomerData) {
