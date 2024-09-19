@@ -7,4 +7,6 @@ function HttpStatus<T>(statusCode: number, data: T) {
 
 const Created = <T>(data: T) => HttpStatus(201, data);
 
-export { Created, HttpStatus };
+const Ok = <T>(data: T) => HttpStatus(200, data);
+
+export { Created, HttpStatus, Ok };

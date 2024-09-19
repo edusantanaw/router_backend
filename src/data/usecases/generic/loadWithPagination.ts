@@ -1,15 +1,12 @@
 import { IPagination, IPaginationResponse } from "../../../@types/pagination.type";
+import { ILoadWithPaginationlUsecase, IPagationationData } from "../../../domain/usecases/loadWithPagination";
 
-type IPagationationData = {
-  take?: string | number;
-  skip?: string | number;
-};
 
 interface ILoadWithPaginationRepository<T> {
   loadWithPagination(data: IPagination): Promise<IPaginationResponse<T>>;
 }
 
-export class LoadWithPaginationlUsecase<T> {
+export class LoadWithPaginationlUsecase<T> implements ILoadWithPaginationlUsecase<T> {
   constructor(protected repository: ILoadWithPaginationRepository<T>) {}
 
   public async load(data: IPagationationData) {

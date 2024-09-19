@@ -1,5 +1,6 @@
+import { Customer } from "@prisma/client";
 import { IAddress, ICustomer } from "../../@types/customer.type";
-import { IPagination } from "../../@types/pagination.type";
+import { IPagination, IPaginationResponse } from "../../@types/pagination.type";
 import PrismaClient from "../prisma";
 
 export class CustomerRepository {
@@ -40,11 +41,14 @@ export class CustomerRepository {
     return { ...customer, address: customer.address as IAddress } as ICustomer;
   }
 
-  public async loadWithPagination(data: IPagination) {
+  public async loadWithPagination(
+    data: IPagination
+  ): Promise<IPaginationResponse<Customer>> {
     const customers = await PrismaClient.customer.findMany({
       take: data.take,
       skip: data.skip,
     });
-    return customers;
+    const count = await PrismaClient.customer.count();
+    return { total: count, data: customers };
   }
 }
