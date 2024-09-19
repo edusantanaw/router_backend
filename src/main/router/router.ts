@@ -5,16 +5,27 @@ import { loadRouterWithPaginationControllerFactory } from "../factories/controll
 import { updateRouterControllerFactory } from "../factories/controller/routers/update";
 import { disableRouterControllerFactory } from "../factories/controller/routers/disable";
 import { loadRouterCustomerControllerFactory } from "../factories/controller/routers/loadCustomers";
+import validationMiddleare from "../middlewares/validationMiddleare";
+import routerValidation from "../middlewares/validation/router";
 
 export default (router: Router) => {
   const base = "/api/router";
-  router.post(base, expressAdapter(createRouterControllerFactory()));
+  const validateRouterMiddleware = validationMiddleare(routerValidation);
+  router.post(
+    base,
+    validateRouterMiddleware,
+    expressAdapter(createRouterControllerFactory())
+  );
   router.get(base, expressAdapter(loadRouterWithPaginationControllerFactory()));
   router.get(
     `${base}/:id/customers`,
     expressAdapter(loadRouterCustomerControllerFactory())
   );
-  router.put(`${base}/:id`, expressAdapter(updateRouterControllerFactory()));
+  router.put(
+    `${base}/:id`,
+    validateRouterMiddleware,
+    expressAdapter(updateRouterControllerFactory())
+  );
   router.delete(
     `${base}/:id`,
     expressAdapter(disableRouterControllerFactory())
