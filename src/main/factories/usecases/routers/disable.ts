@@ -1,7 +1,7 @@
 import { DisableRouterUsecase } from "../../../../data/usecases/routers/disable";
-import { RouterRepository } from "../../../../infra/repositories/router.repository";
+import { routerGatewayFactory } from "../../gateway/router";
 
 export function disableRouterUsecaseFactory() {
-  const repository = new RouterRepository();
+  const repository = routerGatewayFactory();
   return new DisableRouterUsecase(repository);
 }

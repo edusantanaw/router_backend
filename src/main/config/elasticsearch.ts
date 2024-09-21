@@ -9,8 +9,4 @@ const client = new Client({
   node: HOST,
 });
 
-client.search({
-  index: "customers",
-});
-
 export default client;

@@ -7,6 +7,7 @@ import { disableRouterControllerFactory } from "../factories/controller/routers/
 import { loadRouterCustomerControllerFactory } from "../factories/controller/routers/loadCustomers";
 import validationMiddleare from "../middlewares/validationMiddleare";
 import routerValidation from "../middlewares/validation/router";
+import { loadRouterWithElasticControllerFactory } from "../factories/controller/routers/loadWithElastic";
 
 export default (router: Router) => {
   const base = "/api/router";
@@ -29,5 +30,9 @@ export default (router: Router) => {
   router.delete(
     `${base}/:id`,
     expressAdapter(disableRouterControllerFactory())
+  );
+  router.get(
+    `${base}/elastic`,
+    expressAdapter(loadRouterWithElasticControllerFactory())
   );
 };

@@ -1,23 +1,23 @@
 import { SearchTotalHits } from "@elastic/elasticsearch/lib/api/types";
-import { ICustomer } from "../../@types/customer.type";
 import { IPagination, IPaginationResponse } from "../../@types/pagination.type";
 import client from "../../main/config/elasticsearch";
+import { IRouter } from "../../@types/route.type";
 
-export class CustomerRepositoryElasticSearch {
-  private index = "customers_index";
+export class RouterRepositoryElasticSearch {
+  private index = "routers_index";
 
-  public async create(data: ICustomer) {
+  public async create(data: IRouter) {
     await client.create({
       index: this.index,
-      id: data.id,
+      id: data.IP,
       document: data,
     });
   }
 
-  public async update(data: ICustomer) {
+  public async update(data: IRouter) {
     await client.update({
       index: this.index,
-      id: data.id,
+      id: data.IP,
       body: {
         doc: data,
       },
@@ -26,8 +26,8 @@ export class CustomerRepositoryElasticSearch {
 
   public async loadWithPagination(
     data: IPagination
-  ): Promise<IPaginationResponse<ICustomer>> {
-    const result = await client.search<ICustomer>({
+  ): Promise<IPaginationResponse<IRouter>> {
+    const result = await client.search<IRouter>({
       index: this.index,
       body: {
         from: data.skip,

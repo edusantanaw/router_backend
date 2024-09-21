@@ -6,6 +6,7 @@ import { updateCustomerControllerFactory } from "../factories/controller/custome
 import { disableCustomerControllerFactory } from "../factories/controller/customer/disable";
 import validationMiddleare from "../middlewares/validationMiddleare";
 import customer from "../middlewares/validation/customer";
+import { loadWithElasticSearchControllerFactory } from "../factories/controller/customer/loadWithElasticsearch";
 
 export default (router: Router) => {
   const base = "/api/customer";
@@ -27,5 +28,9 @@ export default (router: Router) => {
   router.delete(
     `${base}/:id`,
     expressAdapter(disableCustomerControllerFactory())
+  );
+  router.get(
+    `${base}/elastic`,
+    expressAdapter(loadWithElasticSearchControllerFactory())
   );
 };

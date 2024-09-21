@@ -1,7 +1,7 @@
+import { routerGatewayFactory } from '../../gateway/router';
 import { CreateRouterUsecase } from './../../../../data/usecases/routers/create';
-import { RouterRepository } from "../../../../infra/repositories/router.repository";
 
 export function createRouterUsecaseFactory(){
-    const repository = new RouterRepository()
+    const repository =  routerGatewayFactory()
     return new CreateRouterUsecase(repository)
 }
