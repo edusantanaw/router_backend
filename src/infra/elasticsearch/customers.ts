@@ -7,21 +7,29 @@ export class CustomerRepositoryElasticSearch {
   private index = "customers_index";
 
   public async create(data: ICustomer) {
-    await client.create({
-      index: this.index,
-      id: data.id,
-      document: data,
-    });
+    try {
+      await client.create({
+        index: this.index,
+        id: data.id,
+        document: data,
+      });
+    } catch (error) {
+      // ignorar caso tenha algum erro de conexão
+    }
   }
 
   public async update(data: ICustomer) {
-    await client.update({
-      index: this.index,
-      id: data.id,
-      body: {
-        doc: data,
-      },
-    });
+    try {
+      await client.update({
+        index: this.index,
+        id: data.id,
+        body: {
+          doc: data,
+        },
+      });
+    } catch (error) {
+      // ignorar caso tenha algum erro de conexão
+    }
   }
 
   public async loadWithPagination(
