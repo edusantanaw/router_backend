@@ -57,6 +57,9 @@ export class RouterRepository {
     data: IPagination
   ): Promise<IPaginationResponse<Routers>> {
     const routers = await PrismaClient.routers.findMany({
+      where: {
+        active: true,
+      },
       take: data.take,
       skip: data.skip,
     });
@@ -67,10 +70,11 @@ export class RouterRepository {
   public async loadCustomers(IP: string) {
     const customers = await PrismaClient.customer.findMany({
       where: {
+        active: true,
         Routers: {
           some: {
-            IP: IP
-          }
+            IP: IP,
+          },
         },
       },
     });

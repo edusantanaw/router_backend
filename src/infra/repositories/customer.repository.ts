@@ -45,8 +45,14 @@ export class CustomerRepository {
     data: IPagination
   ): Promise<IPaginationResponse<Customer>> {
     const customers = await PrismaClient.customer.findMany({
+      where: {
+        active: true,
+      },
       take: data.take,
       skip: data.skip,
+      orderBy: {
+        createdAt: "desc",
+      },
     });
     const count = await PrismaClient.customer.count();
     return { total: count, data: customers };

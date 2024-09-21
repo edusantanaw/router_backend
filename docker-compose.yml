@@ -5,10 +5,13 @@ services:
       context: .
       dockerfile: Dockerfile
     ports: ["8080:8080"]
-    links:
-     - postgres
+    environment:
+      - PORT=8080
+      - DATABASE_URL="postgresql://postgres:pass123@postgres:5432/routers?schema=public"
+      - ELASTIC_HOST="http://elasticsearch:9200"  
     depends_on: 
       - postgres
+      - elasticsearch 
 
   postgres:
     image: postgres:14-alpine
@@ -21,6 +24,18 @@ services:
       - POSTGRES_DB=routers
     volumes:
       - pgdata:/var/lib/postgresql/data
+  
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.5.0
+    container_name: elasticsearch
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - xpack.security.enabled=false
+    
 
 volumes:
   pgdata:

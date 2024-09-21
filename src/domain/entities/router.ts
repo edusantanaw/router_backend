@@ -24,7 +24,7 @@ export class Router {
       IPv6: this.IPv6,
       brand: this.brand,
       active: this.active,
-      customers: this.customers,
+      customers: this.customers ?? [],
       model: this.model,
     };
   }

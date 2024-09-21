@@ -9,7 +9,7 @@ export class Customer {
   private name: string;
   private personType: PersonType;
   private cpfCnpj: string;
-  private dateOfBirth: Date;
+  private dateOfBirth?: string;
   private address: any;
   private createdAt?: Date;
   private active: boolean = true;
@@ -18,7 +18,7 @@ export class Customer {
     this.id = data.id ?? randomUUID();
     this.name = data.name;
     this.address = data.address;
-    this.dateOfBirth = new Date(data.dateOfBirth);
+    this.dateOfBirth = data.dateOfBirth;
     this.cpfCnpj = data.cpfCnpj;
     if (!PersonType[data.personType])
       throw new InvalidEntityException(messages.invalidCustomerType);

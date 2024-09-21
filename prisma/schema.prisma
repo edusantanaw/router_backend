@@ -18,7 +18,7 @@ model Customer {
   name       String
   personType Int
   cpfCnpj    String    @unique
-  dateOfBirth DateTime
+  dateOfBirth String?
   address    Json
   createdAt  DateTime  @default(now()) @db.Timestamp() 
   active     Boolean   @default(true)

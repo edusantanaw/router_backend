@@ -1,5 +1,6 @@
 import { IController } from "../../@types/controller.type";
 import { Request, Response } from "express";
+import errorHandler from "../config/errorHandler";
 
 export default <In>(controller: IController<In>) => {
   return async (req: Request, res: Response) => {
@@ -11,9 +12,9 @@ export default <In>(controller: IController<In>) => {
       });
       return res.status(response.statusCode).json(response.data);
     } catch (error) {
-      console.log(error);
-      return res.status(500).send("Internal Server Error!");
+      console.log(error)
+      const { data, statusCode } = errorHandler(error as Error);
+      return res.status(statusCode).json(data);
     }
   };
 };
- 
