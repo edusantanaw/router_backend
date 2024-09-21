@@ -16,7 +16,7 @@ export function makeAValidCustomer(): ICreateCustomerData {
       street: "aaaaaa"
     },
     cpfCnpj: "1111111111111",
-    dateOfBirth: new Date(),
+    dateOfBirth: "20/12/2002",
     personType: PersonType.LEGAL,
     createdAt: new Date(),
   };
