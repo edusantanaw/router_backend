@@ -1,6 +1,6 @@
 import { IRouter } from "../../../@types/route.type";
 import { Brand } from "../../../domain/enums/brand.enum";
-import { AlreadyExistsException } from "../../../domain/exceptions/alreadyExists.exception";
+import { AlreadyExistsException } from "../../../domain/exceptions/AlreadyExists.exception";
 import { RouterRepositoryInMemory } from "./../../../../test/mocks/routerRepository";
 import { CreateRouterUsecase } from "./create";
 import messages from "./messages/messages.json";

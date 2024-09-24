@@ -1,4 +1,4 @@
-import { AlreadyExistsException } from "./../../domain/exceptions/alreadyExists.exception";
+import { AlreadyExistsException } from "./../../domain/exceptions/AlreadyExists.exception";
 import { HttpStatus } from "../../@types/http";
 import { AlreadyDisabledException } from "../../domain/exceptions/alreadyDisabled.exception";
 import { InvalidEntityException } from "../../domain/exceptions/invalidEntityException";

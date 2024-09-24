@@ -1,6 +1,6 @@
 import { IRouter } from "../../../@types/route.type";
 import { Router } from "../../../domain/entities/router";
-import { AlreadyExistsException } from "../../../domain/exceptions/alreadyExists.exception";
+import { AlreadyExistsException } from "../../../domain/exceptions/AlreadyExists.exception";
 import { ICreateUsecase } from "../../../domain/usecases/create.usecase";
 import { ICreateRepository } from "../../repositories/create.repository";
 import messages from "./messages/messages.json";

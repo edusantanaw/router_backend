@@ -1,7 +1,7 @@
 import { CustomerRepositoryInMemory } from "../../../../test/mocks/customerRepository";
 import { makeAValidCustomer } from "../../../../test/utils/createCustomer";
 import { ICustomer } from "../../../@types/customer.type";
-import { AlreadyExistsException } from "../../../domain/exceptions/alreadyExists.exception";
+import { AlreadyExistsException } from "../../../domain/exceptions/AlreadyExists.exception";
 import { CreateCustomerUsecase } from "./create";
 import messages from "./messages/messages.json";
 
